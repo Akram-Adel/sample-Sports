@@ -47,12 +47,18 @@ const Search = () => {
     && setResults(articles.filter((a) => a.title.toLocaleLowerCase().match(searchTerm.toLocaleLowerCase())));
   }, [searchTerm]);
 
+  // State -- Search Blur
+  const [blurTimeout, setBlurTimeout] = useState<NodeJS.Timeout>(); // eslint-disable-line no-undef
+
   return (
-    <div className="search">
+    <div
+      className="search"
+      onFocus={() => (blurTimeout) && clearTimeout(blurTimeout)}
+      onBlur={() => setBlurTimeout(setTimeout(() => setSearchActive(false), 100))}>
+
       <input
         ref={inputRef}
         type="text" className={`form-control search__input ${!searchActive && 'search__input--inactive'}`}
-        onBlur={() => setTimeout(() => setSearchActive(false), 100)} // timeout to allow link action
         value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
       <BsSearch onClick={() => setSearchActive((prev) => !prev)} />
 
@@ -60,7 +66,7 @@ const Search = () => {
       <div className="search__results-container">
         {results.map((a) => (
           <Link
-            to={`/news/${a.id}`}
+            to={`/news/${a.id}`} onClick={() => setSearchActive(false)}
             key={a.id} className="search__result">
             {a.title}
           </Link>
