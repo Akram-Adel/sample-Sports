@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 
 import { articles } from 'services/newsService';
 
+import { NewsItem } from 'components';
 import Banner from './components/banner';
 
 const Home = () => {
@@ -21,31 +21,16 @@ const Home = () => {
 
       <div className="d-flex justify-content-between my-4">
         <div className="fw-bold">
-          Recentrly Added
+          Recently Added
         </div>
-        <button type="button" className="btn btn-light">
+        <Link to="/news" className="btn btn-light">
           Show All
-        </button>
+        </Link>
       </div>
 
       <div className="row">
         {articlesData.map((article) => (
-          <div key={article.id} className="card col-lg-3 col-sm-4 mb-4 border-0">
-            <div
-              className="card-img-top card__bg-img"
-              style={{ backgroundImage: `url(${article.urlToImage})` }} />
-
-            <div className="card-body">
-              <Link className="card-title stretched-link fs-5 card__link" to={`/news/${article.id}`}>
-                {article.title.slice(0, 45)}
-                {article.title.length > 45 && '...'}
-              </Link>
-              <small className="card-text text-muted">
-                {moment(article.publishedAt).format('MMM DD/YYYY hh:mm a')}
-              </small>
-            </div>
-          </div>
-
+          <NewsItem key={article.id} article={article} />
         ))}
       </div>
     </>
