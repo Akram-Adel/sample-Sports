@@ -1,3 +1,8 @@
+:root {
+  --bs-primary: #4752B5;
+  --bs-secondary: #6B84FF;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +12,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  min-height: calc(100vh - 0rem);
+  display: flex;
+  flex-direction: column;
+}
+
+// Overrides
+.container-fluid {
+  padding: 1rem 1.5rem
 }

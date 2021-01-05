@@ -1,10 +1,20 @@
 import React from 'react';
+import './App.sass';
+
+import Header from './Header';
+import Footer from './Footer';
 
 function App() {
   return (
-    <div>
-      Hello World
-    </div>
+    <>
+      <Header />
+
+      <div className="container-fluid" style={{ flexGrow: 1 }}>
+        Hello
+      </div>
+
+      <Footer />
+    </>
   );
 }
 
