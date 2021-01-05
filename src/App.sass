@@ -5,6 +5,7 @@
 
 // Class names follow the BEM guidelines
 .header
+  z-index: 999
   position: fixed
   top: 0
   left: 0
@@ -61,7 +62,6 @@
   &__item
     margin-bottom: 0.1rem
 
-  
 .search
   display: flex
   align-items: center
@@ -116,3 +116,30 @@
     align-items: center
     &>svg
       font-size: 3rem
+
+.banner
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  height: 15rem
+  background-image: url('https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+  background-position: center
+  background-size: cover
+  color: var(--bs-white)
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba(0,0,0,0.4)
+  &>*
+    z-index: 1
+
+.card-bg-img
+  height: 15rem
+  background-position: center
+  background-size: cover
