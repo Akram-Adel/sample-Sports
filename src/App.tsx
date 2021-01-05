@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.sass';
 
 import RootRouter from 'routers/rootRouter';
@@ -7,7 +8,7 @@ import Footer from './Footer';
 
 function App() {
   return (
-    <>
+    <Router>
       <Header />
 
       <div className="container-fluid" style={{ flexGrow: 1 }}>
@@ -15,7 +16,7 @@ function App() {
       </div>
 
       <Footer />
-    </>
+    </Router>
   );
 }
 
